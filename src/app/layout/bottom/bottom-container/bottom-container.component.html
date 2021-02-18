@@ -24,42 +24,31 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-
         <div>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
 
-    </mat-step>
-
-    <mat-step [stepControl]="secondFormGroup" label="Birth date">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
     </mat-step>
 
     <mat-step [stepControl]="secondFormGroup" label="OS of choice">
       <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option value="MacOS">Mac OS</mat-option>
+            <mat-option value="Linux">Linux</mat-option>
+            <mat-option value="Windows">Windows</mat-option>
+          </mat-select>
         </mat-form-field>
+
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
-
 
 
     <mat-step>
