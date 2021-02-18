@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormDTO} from '../../../datamodels/formDTO';
 import {MatDatepicker} from '@angular/material/datepicker';
 import {ToastrService} from 'ngx-toastr';
+import {FormService} from '../../../form.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class BottomContainerComponent implements OnInit {
 
   // tslint:disable-next-line:variable-name
   constructor(private _formBuilder: FormBuilder,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private formService: FormService) {
     this.formDTO = {first_name: '', birth_date: '', os: '', something_about: ''};
     this.date = new Date();
 
@@ -43,9 +45,9 @@ export class BottomContainerComponent implements OnInit {
     });
   }
   submitForm() {
-    this.toastr.success("You are Logged in!","Success",{
-      positionClass: 'toast-top-center',timeOut:2000,
-    });
+    // this.toastr.success("You are Logged in!","Success",{
+    //   positionClass: 'toast-top-center',timeOut:2000,
+    // });
     if (this.formDTO.first_name === '' || this.date === null){
       alert('first name or birthdate cannot be blank!');
     }
@@ -56,13 +58,23 @@ export class BottomContainerComponent implements OnInit {
     }
     else
       {
-    this.formDTO.birth_date = this.date.toLocaleDateString();
-    alert(this.formDTO.first_name + ' ' + this.formDTO.birth_date + ' ' + this.formDTO.os + ' ' + this.formDTO.something_about + ' ');
-    this.date = new Date();
-    this.formDTO.first_name = '';
-    this.formDTO.birth_date = '';
-    this.formDTO.os = '';
-    this.formDTO.something_about = '';
+        this.formDTO.birth_date = this.date.toLocaleDateString();
+        this.formService.addForm(this.formDTO).subscribe(
+          (value) => {
+            this.toastr.success("Form Successfully Created!","Success",{
+              timeOut: 2000,
+            });
+            this.date = new Date();
+            this.formDTO.first_name = '';
+            this.formDTO.birth_date = '';
+            this.formDTO.os = '';
+            this.formDTO.something_about = '';
+            },
+          (error) => {
+            this.toastr.error("Connection Error during sending form.","Error",{
+              timeOut: 2000,
+            });
+          });
     }
   }
 }
