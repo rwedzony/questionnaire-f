@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BottomContainerComponent } from './bottom-container/bottom-container.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -10,7 +11,8 @@ import { BottomContainerComponent } from './bottom-container/bottom-container.co
     BottomContainerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule
   ]
 })
 export class BottomModule { }

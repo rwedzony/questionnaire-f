@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopContainerComponent } from './top-container/top-container.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -10,7 +11,8 @@ import { TopContainerComponent } from './top-container/top-container.component';
     TopContainerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule
   ]
 })
 export class TopModule { }
