@@ -6,6 +6,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {DemoMaterialModule} from './material_module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import {DemoMaterialModule} from './material_module';
     ReactiveFormsModule,
     MatFormFieldModule,
     DemoMaterialModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ]
 })
 export class BottomModule { }
