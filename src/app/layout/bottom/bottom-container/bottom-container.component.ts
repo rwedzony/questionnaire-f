@@ -19,7 +19,8 @@ export class BottomContainerComponent implements OnInit {
   // tslint:disable-next-line:typedef
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstGroupCtrl1: ['', Validators.required],
+      firstGroupCtrl2: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
