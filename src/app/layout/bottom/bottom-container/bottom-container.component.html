@@ -1,61 +1,69 @@
 <mat-card>
-  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
 
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-horizontal-stepper>
+
+    <form [formGroup]="firstFormGroup" (ngSubmit)="submit">
 
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>First name</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        <ng-template matStepLabel>First name & Birth date</ng-template>
+        <mat-form-field [style.width.px]=230>
+          <mat-label>First name</mat-label>
+          <input matInput placeholder="Type your answer here" formControlName="firstGroupCtrl1" required>
         </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
+          <br>
+          <br>
+          <br>
 
-    <mat-step [stepControl]="secondFormGroup" label="Birth date">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
+        <mat-form-field [style.width.px]=230>
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Type your answer here" formControlName="firstGroupCtrl2" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button  matStepperNext>Next</button>
         </div>
-      </form>
+
+
     </mat-step>
 
     <mat-step [stepControl]="secondFormGroup" label="OS of choice">
-      <form [formGroup]="secondFormGroup">
-        <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                 required>
+
+
+        <mat-form-field appearance="fill">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option value="MacOS">Mac OS</mat-option>
+            <mat-option value="Linux">Linux</mat-option>
+            <mat-option value="Windows">Windows</mat-option>
+          </mat-select>
         </mat-form-field>
+
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
-      </form>
+
     </mat-step>
 
 
+      <mat-step [stepControl]="thirdFormGroup">
 
-    <mat-step>
-      <ng-template matStepLabel>Something about you</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
+          <ng-template matStepLabel>Something about you</ng-template>
+
+          <mat-form-field [style.width.px]=300>
+            <mat-label>Something about you</mat-label>
+            <input matInput placeholder="Experienced dev with about (140 char. top)">
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <br>
+            <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
+          </div>
+      </mat-step>
+    </form>
 
   </mat-horizontal-stepper>
 
