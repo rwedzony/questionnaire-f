@@ -46,7 +46,7 @@ export class BottomContainerComponent implements OnInit {
   }
   submitForm() {
     if (this.formDTO.first_name === '' || this.date === null){
-      this.toastr.error("first name or birthday cannot be blank!","Error",{
+      this.toastr.error("first name and birthday cannot be blank!","Error",{
         timeOut: 2000,
         positionClass: 'toast-top-center',
       });

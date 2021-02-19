@@ -1,6 +1,10 @@
 # QuestionnaireFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+Front end part of the Questionnaire App.This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+
+# Hosting
+
+Project is hosted thank Github pages under url: https://rwedzony.github.io/questionnaire_front/.
 
 ## Development server
 
