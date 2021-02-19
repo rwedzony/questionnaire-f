@@ -45,24 +45,36 @@ export class BottomContainerComponent implements OnInit {
     });
   }
   submitForm() {
-    // this.toastr.success("You are Logged in!","Success",{
-    //   positionClass: 'toast-top-center',timeOut:2000,
-    // });
     if (this.formDTO.first_name === '' || this.date === null){
-      alert('first name or birthdate cannot be blank!');
+      this.toastr.error("first name or birthday cannot be blank!","Error",{
+        timeOut: 2000,
+        positionClass: 'toast-top-center',
+      });
     }
-    else if(this.formDTO.first_name.length > 10)
+    else if(this.formDTO.first_name.length > 20)
     {
-      alert('First name must not be longer, than 10 characters!!!')
+      this.toastr.error("first name cannot be longer than 20 characters!","Error",{
+        timeOut: 2000,
+        positionClass: 'toast-top-center',
+      });
       this.formDTO.first_name = '';
+    }
+    else if(this.formDTO.something_about.length > 140)
+    {
+      this.toastr.error("something_about section cannot be longer than 140git characters!","Error",{
+        timeOut: 2000,
+        positionClass: 'toast-top-center',
+      });
+      this.formDTO.something_about = '';
     }
     else
       {
         this.formDTO.birth_date = this.date.toLocaleDateString();
         this.formService.addForm(this.formDTO).subscribe(
           (value) => {
-            this.toastr.success("Form Successfully Created!","Success",{
+            this.toastr.success("Your form was Successfully Submitted!","Success",{
               timeOut: 2000,
+              positionClass: 'toast-top-center',
             });
             this.date = new Date();
             this.formDTO.first_name = '';
