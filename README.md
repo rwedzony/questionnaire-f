@@ -4,7 +4,7 @@ Front end part of the Questionnaire App.This project was generated with [Angular
 
 # Hosting
 
-Project is hosted thank Github pages under url: https://rwedzony.github.io/questionnaire_front/.
+Project is hosted on Github pages under following url: https://rwedzony.github.io/questionnaire_front/.
 
 ## Development server
 
