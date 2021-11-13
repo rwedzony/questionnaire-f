@@ -34,3 +34,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1. Add App description + Snapshots
 2. Add Questionaries CRUD possibility
 3. Add Unit Tests
+4. Change app name to survey
